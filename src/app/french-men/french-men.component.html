@@ -1,0 +1,67 @@
+<h4>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus ac velit condimentum lacinia et vitae enim. Phasellus eget ipsum tellus. Nulla non nibh eu sapien malesuada varius. Aliquam id neque ac arcu ultricies blandit eget eu ligula. Integer quis volutpat neque, sed efficitur dolor. Vivamus nec cursus libero, in dignissim ante. Aliquam et mattis nisi. In vel condimentum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet commodo massa, eu scelerisque sapien. Nulla consequat, felis molestie fermentum eleifend, ante libero gravida urna, et ultricies dolor neque vehicula nisl. Nullam a consequat lacus, in maximus nibh.
+</h4>
+<h4>
+  Integer pellentesque turpis ut eros viverra varius. Etiam ipsum erat, mollis non fringilla a, tempus nec lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean pellentesque ante vitae justo tincidunt, vel convallis nibh tempor. Aliquam dictum mollis mauris at fermentum. Suspendisse et rhoncus magna. Quisque aliquet, ipsum et eleifend viverra, nulla elit vehicula enim, in sollicitudin dui quam ac velit. Nunc pulvinar sem ut tortor cursus, et aliquam elit pretium. Cras facilisis ornare dignissim. Phasellus vel sapien molestie, accumsan libero a, ultricies ipsum. Ut vitae turpis lorem. Donec tincidunt risus quis dui viverra egestas. Nulla non vehicula ligula. Maecenas at tortor neque. Pellentesque sodales, erat et elementum elementum, lacus enim sagittis ligula, non mollis odio lectus eget mauris. Curabitur ultrices aliquam euismod.
+</h4>
+
+<div class="stats">
+  <div class="chart">
+    <canvas baseChart
+      *ngIf="statisticsVisible"
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+    >
+  </canvas>
+  </div>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="topTenOldest" sticky="true" *ngIf="statisticsVisible">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <ng-container matColumnDef="picture">
+        <th mat-header-cell *matHeaderCellDef> Picture </th>
+        <td mat-cell *matCellDef="let element"> <img src={{element.picture.medium}}> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name.title}} {{element.name.first}} {{element.name.last}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dob.age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob.age}} </td>
+      </ng-container>
+    </table>
+  </div>
+
+  <button mat-button mat-raised-button color="primary" 
+  [disabled]="topTenOldest.length === 0"
+  (click)="statisticsVisible = !statisticsVisible">
+     {{statisticsVisible ? 'Hide statistics' : 'Show statistics'}}
+    </button>
+
+  <div [ngClass]="{'text-with-background' : showTextBackground}">
+    <h4>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus ac velit condimentum lacinia et vitae enim. Phasellus eget ipsum tellus. Nulla non nibh eu sapien malesuada varius. Aliquam id neque ac arcu ultricies blandit eget eu ligula. Integer quis volutpat neque, sed efficitur dolor. Vivamus nec cursus libero, in dignissim ante. Aliquam et mattis nisi. In vel condimentum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet commodo massa, eu scelerisque sapien. Nulla consequat, felis molestie fermentum eleifend, ante libero gravida urna, et ultricies dolor neque vehicula nisl. Nullam a consequat lacus, in maximus nibh.
+    </h4>
+    <h4>
+      Integer pellentesque turpis ut eros viverra varius. Etiam ipsum erat, mollis non fringilla a, tempus nec lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean pellentesque ante vitae justo tincidunt, vel convallis nibh tempor. Aliquam dictum mollis mauris at fermentum. Suspendisse et rhoncus magna. Quisque aliquet, ipsum et eleifend viverra, nulla elit vehicula enim, in sollicitudin dui quam ac velit. Nunc pulvinar sem ut tortor cursus, et aliquam elit pretium. Cras facilisis ornare dignissim. Phasellus vel sapien molestie, accumsan libero a, ultricies ipsum. Ut vitae turpis lorem. Donec tincidunt risus quis dui viverra egestas. Nulla non vehicula ligula. Maecenas at tortor neque. Pellentesque sodales, erat et elementum elementum, lacus enim sagittis ligula, non mollis odio lectus eget mauris. Curabitur ultrices aliquam euismod.
+    </h4>
+    <h4>
+      Integer pellentesque turpis ut eros viverra varius. Etiam ipsum erat, mollis non fringilla a, tempus nec lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean pellentesque ante vitae justo tincidunt, vel convallis nibh tempor. Aliquam dictum mollis mauris at fermentum. Suspendisse et rhoncus magna. Quisque aliquet, ipsum et eleifend viverra, nulla elit vehicula enim, in sollicitudin dui quam ac velit. Nunc pulvinar sem ut tortor cursus, et aliquam elit pretium. Cras facilisis ornare dignissim. Phasellus vel sapien molestie, accumsan libero a, ultricies ipsum. Ut vitae turpis lorem. Donec tincidunt risus quis dui viverra egestas. Nulla non vehicula ligula. Maecenas at tortor neque. Pellentesque sodales, erat et elementum elementum, lacus enim sagittis ligula, non mollis odio lectus eget mauris. Curabitur ultrices aliquam euismod.
+    </h4>
+  </div>
+ </div>
